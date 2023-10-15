@@ -1,4 +1,4 @@
-from wagtail.core.jinja2tags import WagtailCoreExtension
+from wagtail.jinja2tags import WagtailCoreExtension
 
 import jinja2
 

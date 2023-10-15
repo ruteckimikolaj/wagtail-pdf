@@ -2,16 +2,16 @@ from datetime import datetime
 
 from django.db import models
 
-from wagtail.core.models import Page
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core import blocks
+from wagtail.models import Page
+from wagtail.fields import RichTextField, StreamField
+from wagtail import blocks
 from wagtail.contrib.table_block.blocks import TableBlock
 
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, FieldRowPanel#, InlinePanel, MultiFieldPanel, 
+from wagtail.admin.panels import FieldPanel, FieldRowPanel#, InlinePanel, MultiFieldPanel, 
 
 from wagtail_pdf_view.mixins import PdfViewPageMixin, PdfModelMixin
 
-from wagtail.core.fields import RichTextField
+from wagtail.fields import RichTextField
 
 from wagtail.images.blocks import ImageChooserBlock
 
@@ -99,7 +99,7 @@ class ReportPage(PdfViewPageMixin, Page):
             FieldPanel("address_left"),
             FieldPanel("address_right"),
         ]),
-        StreamFieldPanel("content"),
+        FieldPanel("content"),
     ]
     
     
