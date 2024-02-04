@@ -2,12 +2,12 @@ from datetime import datetime
 
 from django.db import models
 
-from wagtail.core.models import Page
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core import blocks
+from wagtail.models import Page
+from wagtail.fields import RichTextField, StreamField
+from wagtail import blocks
 from wagtail.contrib.table_block.blocks import TableBlock
 
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel#, InlinePanel, MultiFieldPanel, FieldRowPanel
+from wagtail.admin.panels import FieldPanel #, InlinePanel, MultiFieldPanel, FieldRowPanel
 
 from wagtail_pdf_view.mixins import PdfViewPageMixin, PdfModelMixin
 
@@ -30,7 +30,7 @@ class DemoModel(PdfModelMixin, models.Model):
     panels = [
         FieldPanel("creation_date"),
         FieldPanel("author"),
-        StreamFieldPanel("content"),
+        FieldPanel("content"),
     ]
     
     template_name = "home/demo_model.html"
@@ -70,7 +70,7 @@ class SimplePdfPage(PdfViewPageMixin, Page):
     content_panels = Page.content_panels + [
         FieldPanel("creation_date"),
         FieldPanel("author"),
-        StreamFieldPanel("content"),
+        FieldPanel("content"),
     ]
     
     
@@ -80,7 +80,7 @@ class SimplePdfPage(PdfViewPageMixin, Page):
     #def get_stylesheets(self, request):
     #    return ["css/demo_page.css"]
 
-from wagtail.core.fields import RichTextField
+from wagtail.fields import RichTextField
 
 from wagtail.images.blocks import ImageChooserBlock
 
@@ -131,7 +131,7 @@ class HtmlAndPdfPage(PdfViewPageMixin, Page):
         FieldPanel("author"),
         FieldPanel("address"),
         FieldPanel("body"),
-        StreamFieldPanel("content"),
+        FieldPanel("content"),
     ]
     
     

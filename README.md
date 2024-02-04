@@ -60,10 +60,10 @@ Like for a regular Wagtail page, the template should be located under: `<app_dir
 **If you're using django-tex the template extention .tex is expected**.
 
 ```py
-from wagtail.core.models import Page
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core import blocks
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.models import Page
+from wagtail.fields import RichTextField, StreamField
+from wagtail import blocks
+from wagtail.admin.panels import FieldPanel
 
 from wagtail_pdf_view.mixins import PdfViewPageMixin
 
@@ -78,7 +78,7 @@ class SimplePdfPage(PdfViewPageMixin, Page):
     
     # content panel for the CMS (same as always)
     content_panels = Page.content_panels + [
-        StreamFieldPanel("content"),
+        FieldPanel("content"),
     ]
     
     # OPTIONAL: If you want to include a stylesheet
